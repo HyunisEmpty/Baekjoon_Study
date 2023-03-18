@@ -1,19 +1,30 @@
-# 선택 정렬
 import sys
+
+# 퀵 정렬 함수
+def quick_sort(arr):
+
+    if len(arr) <= 1:
+        return arr
+
+    pivot = arr[len(arr)//2]
+    lesser_arr, equal_arr, greater_arr = [], [], []
+
+    for num in arr:
+        if num < pivot:
+            lesser_arr.append(num)
+        elif num > pivot:
+            greater_arr.append(num)
+        else:
+            equal_arr.append(num)
+
+    return quick_sort(lesser_arr) + equal_arr + quick_sort(greater_arr)
+
 
 n = int(sys.stdin.readline().strip())
 
 number_list = [int(sys.stdin.readline().strip()) for _ in range(n)]
 
-for i in range(n-1):
-    # 최솟갑을 정렬되지 않은 부분의 첫번째 값으로 변경
-    min_num = number_list[i]
+number_list = quick_sort(number_list)
 
-    for j in range(i, n):
-        if number_list[j] < min_num:
-            min_num, number_list[j] = number_list[j], min_num
-
-    number_list[i] = min_num
-
-for count in range(n):
-    print(number_list[count])
+for number in number_list:
+    print(number)
