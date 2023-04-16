@@ -11,10 +11,8 @@ public class main {
 			
 			int a = int.Parse(numbers[0]);
 			int b = int.Parse(numbers[1]);
-			int sum = a + b;
-			int count = i + 1;
 			
-			string answer = $"Case #{count}: {a} + {b} = {sum}";
+			string answer = $"Case #{i + 1}: {a} + {b} = {a+b}";
 			
 			Console.WriteLine(answer);
 		}
