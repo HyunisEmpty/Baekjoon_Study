@@ -1,4 +1,4 @@
-# <img width="20px"  src="https://d2gd6pc034wcta.cloudfront.net/tier/4.svg" class="solvedac-tier"> [거스름돈](https://www.acmicpc.net/problem/5585) 
+[거스름돈](https://www.acmicpc.net/problem/5585) 
 
 | 제출 번호 | 닉네임 | 채점 결과 | 메모리 | 시간 | 언어 | 코드 길이 |
 |---|---|---|---|---|---|---|
