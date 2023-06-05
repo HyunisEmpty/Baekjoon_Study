@@ -4,7 +4,6 @@ n, m = map(int, sys.stdin.readline().split())
 
 matrix_a = []
 matrix_b = []
-matrix_c = []
 
 for i in range(n):
     matrix_a.append(list(map(int, sys.stdin.readline().split())))
