@@ -1,5 +1,7 @@
 # Baekjoon_Study
 ### 알고리즘 해설
+###### Algorithm 설명(편집날짜 : 2023.10.17)
+>Algorithm <https://fearless-tray-026.notion.site/Algorithm-3661c193b08d4892bea9d2a16cf9de80?pvs=4>
 ###### Python Code 알고리즘 해설(편집 날짜 : 2023.10.14)
 >Python: <https://fearless-tray-026.notion.site/Python-6e826e9dd83e477a862f3ad43a6c69d7?pvs=4>
 ###### C# Code 알고리즘 해설(편집 날짜 : 2023.10.11)
