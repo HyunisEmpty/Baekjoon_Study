@@ -20,4 +20,4 @@ else:
         bottom2 = i * bottom2
 
 # print(top//(bottom1 * bottom2))
-print(int(top//(bottom1 * bottom2)))
+print(int(top/(bottom1 * bottom2)))
