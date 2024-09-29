@@ -21,14 +21,14 @@ for i in range(n):
 deque_a = deque()
 max_cnt = 0
 for land_x, land_y, land_cnt in land_list:
-    
+
+    # 이미 방문한 땅의 위치는 매번 초기화 한다.
     n_set = set()
 
     # deque n_set 초기값 정의
     deque_a.append((land_x, land_y, land_cnt))
     n_set.add((land_x, land_y))
-    n_deepcopy_list = copy.deepcopy(n_list)
-
+    
     # BFS 알고리즘
     while len(deque_a) > 0:
 
@@ -45,7 +45,7 @@ for land_x, land_y, land_cnt in land_list:
             if 0 <= nx < n and 0 <= ny < m:
 
                 # 상하좌우가 땅이면서 이전에 방문한적 없는지 확인
-                if n_deepcopy_list[nx][ny] == "L" and (nx, ny) not in n_set:
+                if n_list[nx][ny] == "L" and (nx, ny) not in n_set:
 
                     deque_a.append((nx, ny, cnt + 1))
                     n_set.add((nx, ny))
