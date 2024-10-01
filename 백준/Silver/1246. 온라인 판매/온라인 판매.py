@@ -7,7 +7,7 @@ m_list.sort()
 # pi의 최솟값부터 pi의 최댓값 까지 접근
 max_income = 0  # 수익이 최대가 되는 경우를 저장
 max_i = 0       # 최대로 책정된 달걀 가격
-for i in range(m_list[0], m_list[-1]+1):
+for i in m_list:
 
     # 모든 pi에 접근
     income = 0
