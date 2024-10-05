@@ -7,7 +7,7 @@ for i in range(n):
 n_memo_list = [[0, 0] for _ in range(n + 1)]
 
 # 인자 값으로는 현재 몇번째 계단에 인지와 현재 계단을 올라오며 모은 점수 그리고 연속해서 계단 하나를 올라온 횟수가 저장되어 있다.
-def StepStairs(now_stair, score, cnt, bug_list):
+def StepStairs(now_stair, score, cnt):
 
     global n_list
     global n_memo_list
@@ -28,10 +28,10 @@ def StepStairs(now_stair, score, cnt, bug_list):
     if cnt < 2:
         if now_stair + 1 <= n:
 
-            StepStairs(now_stair + 1, score + n_list[now_stair + 1], cnt + 1, bug_list + [n_list[now_stair + 1]])
+            StepStairs(now_stair + 1, score + n_list[now_stair + 1], cnt + 1)
     if now_stair + 2 <= n:
-        StepStairs(now_stair + 2, score + n_list[now_stair + 2], 1, bug_list + [n_list[now_stair + 2]])
+        StepStairs(now_stair + 2, score + n_list[now_stair + 2], 1)
 
 
-StepStairs(0, 0, 0, [])
+StepStairs(0, 0, 0)
 print(max(n_memo_list[n][0], n_memo_list[n][1]))
