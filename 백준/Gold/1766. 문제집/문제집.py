@@ -32,7 +32,7 @@ while len(min_heap) > 0:
     for i in n_list[local_root_node][0]:    # 진출 노드 확인
         n_list[i][1] -= 1           # 진출 노드의 진입 노드 수 1 감소
 
-        if n_list[i][1] == 0 and not visited[i]:    # 진출 노드가 더 이상 진입 노드가 없으며 방문하지 않은 경우
+        if n_list[i][1] == 0:    # 진출 노드가 더 이상 진입 노드가 없으며 방문하지 않은 경우
             heapq.heappush(min_heap, i)
 
 
