@@ -3,7 +3,7 @@ import sys
 cnt = 1
 
 
-# 루트 노드 출력
+# 루트 노드 출력 ( 경로 압축 )
 def FindRootNode(node):
     global parent
 
@@ -19,18 +19,37 @@ def Union(root1, root2):
     global parent
 
 
-    if root1 != root2 and (root1 != 0 and root2 != 0):  # 서로 다른 부분 집합인 경우
-        if rank[root1] > rank[root2]:
-            parent[root2] = root1
-        elif rank[root1] < rank[root2]:
-            parent[root1] = root2
-        else:
-            parent[root1] = root2
-            rank[root1] += 1
-    else:
-        # 0은 실제로 존재 하지 않는 노드
-        parent[root2] = 0
+    # if root1 != root2 and (root1 != 0 and root2 != 0):  # 서로 다른 부분 집합인 경우
+    #
+    #     # Union by Rank
+    #     if rank[root1] > rank[root2]:
+    #         parent[root2] = root1
+    #     elif rank[root1] < rank[root2]:
+    #         parent[root1] = root2
+    #     else:
+    #         parent[root1] = root2
+    #         rank[root1] += 1
+    #
+    # else:           # 새로운 간선을 연결해서 만든 트리에 순환 구조가 생기는 경우
+    #     # 0은 실제로 존재 하지 않는 노드
+    #     parent[root2] = 0
+    #     parent[root1] = 0
+
+    if root1 == root2:
         parent[root1] = 0
+        parent[root2] = 0
+    else:
+        if parent[root1] == 0 or parent[root2] == 0:
+            parent[root1] = 0
+            parent[root2] = 0
+        else:
+            if rank[root1] > rank[root2]:
+                parent[root2] = root1
+            elif rank[root1] < rank[root2]:
+                parent[root1] = root2
+            else:
+                parent[root1] = root2
+                rank[root1] += 1
 
 
 while True:
