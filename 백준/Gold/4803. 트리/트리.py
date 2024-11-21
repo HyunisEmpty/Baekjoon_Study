@@ -20,7 +20,13 @@ def Union(root1, root2):
 
 
     if root1 != root2 and (root1 != 0 and root2 != 0):  # 서로 다른 부분 집합인 경우
-        parent[root1] = root2
+        if rank[root1] > rank[root2]:
+            parent[root2] = root1
+        elif rank[root1] < rank[root2]:
+            parent[root1] = root2
+        else:
+            parent[root1] = root2
+            rank[root1] += 1
     else:
         # 0은 실제로 존재 하지 않는 노드
         parent[root2] = 0
@@ -35,6 +41,7 @@ while True:
         break
 
     parent = [i for i in range(n + 1)]
+    rank = [0 for i in range(n + 1)]
 
     for _ in range(m):
         node1, node2 = map(int, sys.stdin.readline().split())
