@@ -27,11 +27,11 @@ for drop_point in range(1, n + 1):
         now_weight, now_drop_point = heapq.heappop(min_heap)
 
         if not visited[now_drop_point]:     # 방문 한 적 없는 경우
-            now_item += t_list[now_drop_point-1]
+            now_item += t_list[now_drop_point-1]    # 현재 지역의 아이템 회득
             visited[now_drop_point] = True
 
             for neighbor, neighbor_weight in n_list[now_drop_point]:
-                if neighbor_weight + now_weight <= m:   # 수색 범위 안에 있는 경우
+                if neighbor_weight + now_weight <= m and not visited[neighbor]:   # 수색 범위 안에 있는 경우
                     heapq.heappush(min_heap, (neighbor_weight + now_weight, neighbor))
 
     max_item = max(now_item, max_item)
