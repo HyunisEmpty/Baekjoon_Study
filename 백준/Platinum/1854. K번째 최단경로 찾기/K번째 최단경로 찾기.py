@@ -11,7 +11,6 @@ for _ in range(m):      # 간선 정보 입력
 INF = int(1e9)
 shortest_distance_list = [INF for _ in range(n + 1)]    # 최단 거리 테이블
 shortest_distance_update_list = [0 for _ in range(n + 1)]
-visited = [False for _ in range(n + 1)]                 # 방문 여부 저장
 min_heap = []
 
 shortest_distance_list[1] = 0   # 시작 노드
@@ -27,9 +26,9 @@ while min_heap:
 
         for neighbor, neighbor_weight in n_list[node]:
 
-            heapq.heappush(min_heap, (weight + neighbor_weight, neighbor))
+            if shortest_distance_update_list[neighbor] != k:
+                heapq.heappush(min_heap, (weight + neighbor_weight, neighbor))
 
-# print(shortest_distance_update_list)
 for node in range(1, n + 1):
 
     if shortest_distance_update_list[node] == k:    # k번째 경로가 존재 하는 경우
