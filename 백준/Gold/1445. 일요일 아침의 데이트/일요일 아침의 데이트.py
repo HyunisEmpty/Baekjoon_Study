@@ -4,7 +4,6 @@ from collections import deque
 n, m = map(int, sys.stdin.readline().split())
 
 garbage_set = set()         # 쓰레기 위치 저장
-garbage_side_set = set()    # 쓰레기 주변 위치 저장
 start_position = 0          # 시작 위치 저장
 end_position = 0            # 종료 위치 저장
 queue = deque()             # 자료구조 큐
@@ -40,6 +39,7 @@ for x in range(n):
         elif map_list[x][y] == "F":
             end_position = (x, y)
 
+# 쓰레기 칸의 상하좌우에 쓰레기를 지나가는 칸으로 정의
 for gx, gy in garbage_set:
 
     # # 쓰레기 상하좌우 쓰레기를 지나가는 위치 저장
@@ -52,16 +52,10 @@ for gx, gy in garbage_set:
             if map_list[nx][ny] == ".":
                 map_list[nx][ny] = "g"
 
-
 queue.append(start_position)    # 큐 초기값 지정
 while queue:
 
     x, y = queue.popleft()
-
-    # print(x, y)
-    # for i in range(n):
-    #     print(cnt_list[i])
-    # print("")
 
     for dx, dy in [(1, 0), (-1, 0), (0, 1), (0, -1)]:   # 상하좌우 접근
         nx, ny = x + dx, y + dy
@@ -78,9 +72,7 @@ while queue:
             if not visited[nx][ny]:
 
                 visited[nx][ny] = True     # 접근 표시
-                cnt_list[nx][ny][0] = new_b
-                cnt_list[nx][ny][1] = new_c
-
+                cnt_list[nx][ny] = [new_b, new_c]
                 queue.append((nx, ny))
 
             # 접근한 적이 있는 경우
@@ -88,8 +80,7 @@ while queue:
 
                 # 인접한 칸보다 C가 작다면 접근 O
                 if cnt_list[nx][ny][1] > new_c:
-                    cnt_list[nx][ny][0] = new_b
-                    cnt_list[nx][ny][1] = new_c
+                    cnt_list[nx][ny] = [new_b, new_c]
                     queue.append((nx, ny))
 
                 # 인접한 칸과 C가 같다면
@@ -97,8 +88,7 @@ while queue:
 
                     # 인접한 칸보다 b가 작다면 접근
                     if cnt_list[nx][ny][0] > new_b:
-                        cnt_list[nx][ny][0] = new_b
-                        cnt_list[nx][ny][1] = new_c
+                        cnt_list[nx][ny] = [new_b, new_c]
                         queue.append((nx, ny))
 
 end_x, end_y = end_position
