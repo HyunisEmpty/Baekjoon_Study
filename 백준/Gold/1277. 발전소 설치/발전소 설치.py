@@ -27,8 +27,6 @@ heapq.heappush(min_heap, (distance_list[1], 1))
 while min_heap:
 
     weight, node = heapq.heappop(min_heap)
-    # print(node, distance_list)
-    # print(visited)
 
     if weight <= distance_list[node] and not visited[node]:
         distance_list[node] = weight
