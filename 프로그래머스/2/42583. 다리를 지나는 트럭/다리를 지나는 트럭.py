@@ -9,7 +9,7 @@ def solution(bridge_length, weight, truck_weights):
     
     print(truck_weights)
     
-    while True:
+    while bridge or truck_weights:
         time += 1
         
         # 다리위 Truck의 무게를 1씩 증가
@@ -26,9 +26,5 @@ def solution(bridge_length, weight, truck_weights):
             truck_weight = truck_weights.popleft()
             bridge.append([truck_weight, 1])
             weight -= truck_weight
-
-        
-        if not bridge and not truck_weights:
-            break
     
     return time
